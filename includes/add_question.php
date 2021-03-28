@@ -6,22 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Añadir pregunta - Profesor</title>
-
-    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-		
-		<script type="text/javascript"  >
-			$(document).ready(function(){
-				$("#cbx_subject").change(function () {
-					
-					$("#cbx_subject option:selected").each(function () {
-						subjectid = $(this).val();
-						$.post("/practica1/includes/get_units.php", { subjectid: subjectid }, function(data){
-							$("#cbx_unit").html(data);
-						});            
-					});
-				})
-			});
-		</script>
 </head>
 <body>
 <?php require_once '../includes/helpers.php'; ?>

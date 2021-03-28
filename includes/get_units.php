@@ -3,14 +3,12 @@
 	
 	$subjectid = $_POST['subjectid'];
 	
-	$queryU = "SELECT unitid, name FROM units WHERE subjectid = '$subjectid' ORDER BY name";
-	$resultU = mysqli_query($db,$queryU);
+	$query = "SELECT unitid, name FROM units WHERE subjectid = '$subjectid' ORDER BY name";
+	$result = mysqli_query($db,$query);
 	
-	$html= "<option value=''>Seleccionar tema</option>";
-	
-	while($rowU = $resultU->fetch_assoc())
+	while($row = $result->fetch_assoc())
 	{
-		$html.= "<option value='".$rowU['unitid']."'>".$rowU['name']."</option>";
+		$html.= "<option value='".$row['unitid']."'>".$row['name']."</option>";
 	}
 	
 	echo $html;

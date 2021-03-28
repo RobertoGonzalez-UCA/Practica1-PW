@@ -29,8 +29,8 @@
 
     <!-- Añadir pregunta -->
     <div class="bloque">
+    <h3>Añadir pregunta</h3>
         <form id="combo" name="combo" action="../includes/add_question.php" method="POST">
-            <h3>Añadir pregunta</h3>
             <?php 
                 require_once '../includes/connection.php';
                 $current_uid = $_SESSION['user']['uid'];
@@ -45,20 +45,20 @@
             ?>
 
             <!-- Asignatura y tema -->
-            <label for="cbx_subject">Elije una asignatura: 
+            <label for="cbx_subject">Elige una asignatura: 
                 <select name="cbx_subject" id="cbx_subject" required>
                     <option value="">Selecciona asignatura</option>
                     <?php 
-                    $query = "SELECT * FROM subjects";               // MUESTRA TODAS LAS SUBJECTS
+                    $query = "SELECT S.name, S.subjectid FROM users U, usersubjects US, subjects S WHERE U.uid = '1' AND US.uid = U.uid AND US.subjectid = S.subjectid";
                     $result = mysqli_query($db,$query);
                     while($row = $result->fetch_assoc()) { ?>
                         <option value="<?php echo $row['subjectid']; ?>"><?php echo $row['name']; ?></option>
                     <?php } ?>
                 </select>
             </label>
-            <label for="cbx_unit">Elije un tema: <select name="cbx_unit" id="cbx_unit" required>
+            <label for="cbx_unit">Elige un tema: 
+                <select name="cbx_unit" id="cbx_unit" required>
                     <option value="">Selecciona tema</option>
-
                 </select>
             </label>
 
