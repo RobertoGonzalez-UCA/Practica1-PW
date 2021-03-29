@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets//css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <title>Admin Page</title>
 </head>
 <body>
 
-<?php require_once 'includes/helpers.php'; ?>
-<?php require_once 'includes/connection.php'; ?>
+<?php require_once '../includes/helpers.php'; ?>
+<?php require_once '../includes/connection.php'; ?>
 
 <?php if($_SESSION['user']['rol'] == 'admin'): ?>
 
@@ -73,12 +73,12 @@
         </form>
         <br>
         <a class="boton boton-naranja" href="user_data.php">Mis datos</a>
-        <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
+        <a class="boton boton-rojo" href="../logout.php">Cerrar sesión</a>
         <?php borrarErrores(); ?> 
     </div>
     
 <?php else: ?>
-    <?php header('Location: index.php'); ?>
+    <?php header('Location: ../index.php'); ?>
 <?php endif; ?>
   
 </body>

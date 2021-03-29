@@ -1,5 +1,5 @@
 <?php
-    require_once 'includes/connection.php';
+    require_once '../includes/connection.php';
             
     if($_SESSION['user']['rol'] == 'admin'){
         if(isset($_POST)){
@@ -44,7 +44,7 @@
 
                         
                         if($guardar){
-                            $_SESSION['completed'] = "Tus datos se han actualizado con éxito";
+                            $_SESSION['completed'] = "El usuario se ha borrado con éxito";
                         }else{
                             $_SESSION['errors']['general'] = "Fallo al actualizar tus datos";
                         }
@@ -55,7 +55,7 @@
                     $guardar = mysqli_query($db,$sql);
 
                     if($guardar){
-                        $_SESSION['completed'] = "Tus datos se han actualizado con éxito";
+                        $_SESSION['completed'] = "El usuario se ha borrado con éxito";
                     }else{
                         $_SESSION['errors']['general'] = "Fallo al actualizar tus datos";
                     }
@@ -68,8 +68,8 @@
                 $_SESSION['errors'] = $errores;
             }
         }
-        header('Location: admin_modify.php');
+        header('Location: ../admin.php');
     }else{
-        header('Location: index.php');
+        header('Location: ../index.php');
     }
 ?>

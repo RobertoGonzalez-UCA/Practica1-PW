@@ -1,5 +1,5 @@
 <?php
-    require_once 'includes/connection.php';
+    require_once '../includes/connection.php';
             
     if($_SESSION['user']['rol'] == 'admin'){
         if(isset($_POST)){
@@ -84,7 +84,7 @@
                         /* $_SESSION['user']['name'] = $nombre;
                         $_SESSION['user']['surname'] = $apellidos;
                         $_SESSION['user']['email'] = $email; */
-                        $_SESSION['completed'] = "Tus datos se han actualizado con éxito";
+                        $_SESSION['completed'] = "El usuario se ha modificado con éxito";
                     }else{
                         $_SESSION['errors']['general'] = "Fallo al actualizar tus datos";
                     }
@@ -97,8 +97,8 @@
                 $_SESSION['errors'] = $errores;
             }
         }
-        header('Location: admin_modify.php');
+        header('Location: ../admin.php');
     }else{
-        header('Location: index.php');
+        header('Location: ../index.php');
     }
 ?>

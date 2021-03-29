@@ -34,8 +34,11 @@
         ?>
 
         
-        <a class="boton boton-celeste" href="admin_register.php">Registrar nuevo usuario</a>
-        <a class="boton boton-naranja" href="admin_modify.php">Modificar usuario existente</a>
+        <a class="boton boton-celeste" href="admin_files/admin_register.php">Registrar usuarios</a>
+        <a class="boton boton-naranja" href="admin_files/admin_modify.php">Modificar usuarios</a>
+        <a class="boton boton-celeste" href="admin_files/subject_register.php">Registrar asignaturas</a>
+        <a class="boton boton-naranja" href="admin_files/subject_modify.php">Modificar asignaturas</a>
+
         <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
         <?php borrarErrores(); ?> 
     </div>

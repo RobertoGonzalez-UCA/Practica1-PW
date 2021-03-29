@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets//css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <title>Actualizar Usuario</title>
 </head>
 <body>
-<?php require_once 'includes/redirection.php'; ?>
-<?php require_once 'includes/helpers.php'; ?>
+<?php require_once '../includes/redirection.php'; ?>
+<?php require_once '../includes/helpers.php'; ?>
 
 <?php if($_SESSION['user']['rol'] == 'admin' || $_SESSION['user']['rol'] == 'alumno' || $_SESSION['user']['rol'] == 'profesor'): ?>
 
@@ -58,12 +58,12 @@
                     <input type="submit" value="Actualizar">
                 </form>
                 <br>
-                <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
+                <a class="boton boton-rojo" href="../logout.php">Cerrar sesión</a>
                 <?php borrarErrores(); ?>
             </div>
     </div>
 <?php else: ?>
-    <?php header('Location: index.php'); ?>
+    <?php header('Location: ../index.php'); ?>
 <?php endif; ?>
 
 </body>

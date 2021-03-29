@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="register" class="bloque">
-<h2>Sistema Web para gestión de exámenes online</h2>
+<h2 style="text-align:center;">Sistema Web para gestión de exámenes online</h2>
 </div>
 <?php require_once 'includes/connection.php'; ?>
 <?php require_once 'includes/helpers.php'; ?>
@@ -33,7 +33,7 @@
 
     <!-- LOGIN -->
     <div id="login" class="bloque">
-        <h3>Identifícate</h3>
+        <h3 style="text-align:center;">Identifícate</h3>
         
         <!-- ERROR LOGIN -->
         <?php if(isset($_SESSION['error_login'])): ?>
@@ -42,16 +42,27 @@
             </div>
         <?php endif; ?>
 
-        <form action="login.php" method="POST">
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
+        <form  action="login.php" method="POST">
+            <label style="text-align:center;"for="email">Email</label>
+            <input style="max-width: 200px; margin: 0px auto;" type="email" name="email" required>
 
-            <label for="password">Contraseña</label>
-            <input type="password" name="password" required>
+            <label style="text-align:center;" for="password">Contraseña</label>
+            <input style="max-width: 200px;margin: 0px auto;"type="password" name="password" required>
 
-            <input type="submit" value="Enviar">
+            <input style="margin: 10px auto;" type="submit" value="Entrar">
         </form>
     </div>
+
+    <div class="bloque">
+    © 2021 Copyright:
+    <br>
+<p>   ► Juan Carlos Camacho Carribero
+</p>
+<p>   ► Roberto González Álvarez
+</p>
+<p>  ► Rafael Rodríguez Calvente 
+</p>    
+</div>
 
     
 <?php endif; ?>

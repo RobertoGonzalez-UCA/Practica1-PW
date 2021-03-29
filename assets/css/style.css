@@ -148,7 +148,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"]{
     display: block;
-    width: 40%;
+    width: 95%;
     margin-top:2px;
     margin-bottom: 2px;
 }
@@ -177,7 +177,7 @@ input[type="submit"],
 .boton{
     color:white !important;
     text-align: center;
-    width: 130px;
+    width: 170px;
 }
 
 .boton-naranja{
@@ -185,27 +185,46 @@ input[type="submit"],
     border-color: #bd7d08;
 }
 
+.boton-naranja:hover{
+    background: rgb(248, 210, 140);
+    color: black !important;
+}
+
 .boton-verde{
     background: #21b921;
     border-color: green;
 }
+.boton-verde:hover{
+    background: #8fff8f;
+    color: black !important;
+}
+
 
 .boton-rojo{
     background: red;
     border-color: #444;
+}
+.boton-rojo:hover{
+    background: rgb(250, 123, 123);
+    color: black !important;
 }
 .boton-celeste{
     background: rgb(0, 89, 255);
     border-color: rgb(85, 221, 255);
 }
 
-input[type="submit"]:hover{
+.boton-celeste:hover{
     background: #209bff;
+    color: black !important;
+}
+
+input[type="submit"]:hover{
 }
 
 input[type="submit"]:hover{
     background: #89caff;
 }
+
 
 /*PRINCIPAL*/
 #principal{

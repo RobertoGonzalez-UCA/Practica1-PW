@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets//css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <title>Admin Page</title>
 </head>
 <body>
 
-<?php require_once 'includes/helpers.php'; ?>
-<?php require_once 'includes/connection.php'; ?>
+<?php require_once '../includes/helpers.php'; ?>
+<?php require_once '../includes/connection.php'; ?>
 
 <?php if($_SESSION['user']['rol'] == 'admin'): ?>
 
@@ -57,15 +57,17 @@
                         <form action='update_user.php' method='POST'>
                             <h4>Usuario nº $counter</h4>
                             <label for='nombre'>Nombre</label>
-                            <input type='text' name='nombre' value='$name'>
+                            <input style='width: 200px; 
+                            type='text' name='nombre' value='$name'>
                             <?php echo isset($errors) ? mostrarError($errors,'nombre') : '' ?>
 
                             <label for='apellidos'>Apellidos</label>
-                            <input type='text' name='apellidos' value='$surname' required>
+                            <input style='width: 200px;    padding: 0px;
+                            ' type='text' name='apellidos' value='$surname' required>
                             <?php echo isset($errors) ? mostrarError($errors,'apellidos') : '' ?>
 
                             <label for='email'>Email</label>
-                            <input type='email' name='email' value='$email' required>
+                            <input style='width: 200px; type='email' name='email' value='$email' required>
                             <?php echo isset($errors) ? mostrarError($errors,'email') : '' ?>
 
                             <label for='email_not_modify'></label>
@@ -73,11 +75,11 @@
                             
 
                             <label for='pass'>Contraseña</label>
-                            <input type='password' name='pass' value='$pass' required>
+                            <input style='width: 200px; type='password' name='pass' value='$pass' required>
                             <?php echo isset($errors) ? mostrarError($errors,'pass') : '' ?>
 
                             <label for='rol'>Rol</label>
-                            <input type='text' name='rol' value='$rol' required>
+                            <input style='width: 200px; type='text' name='rol' value='$rol' required>
                             <?php echo isset($errors) ? mostrarError($errors,'rol') : '' ?>
                             <input type='submit' value='Actualizar'>
                         
@@ -112,12 +114,12 @@
         ?>
 
         <br>
-        <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
+        <a class="boton boton-rojo" href="../logout.php">Cerrar sesión</a>
         <?php borrarErrores(); ?> 
     </div>
     
 <?php else: ?>
-    <?php header('Location: index.php'); ?>
+    <?php header('Location: ../index.php'); ?>
 <?php endif; ?>
   
 </body>

@@ -1,5 +1,5 @@
 <?php
-    require_once 'includes/connection.php';
+    require_once '../includes/connection.php';
 
     if($_SESSION['user']['rol'] == 'admin'){
         if(isset($_POST)){
@@ -94,9 +94,9 @@
         
         
                 if($save){
-                    $_SESSION['completed'] = "El registro se ha completado con éxito";
+                    $_SESSION['completed'] = "El usuario se ha registrado con éxito";
                 }else{
-                    $_SESSION['errors']['general'] = "Fallo al guardar el usuario...";
+                    $_SESSION['errors']['general'] = "Fallo al registrar el usuario...";
                 }
         
                 
@@ -143,17 +143,17 @@
                 }
         
                 if($save){
-                    $_SESSION['completed'] = "El registro se ha completado con éxito";
+                    $_SESSION['completed'] = "El usuario se ha registrado con éxito";
                 }else{
-                    $_SESSION['errors']['general'] = "Fallo al guardar el usuario...";
+                    $_SESSION['errors']['general'] = "Fallo al registrar el usuario...";
                 }
         
             }else{
                 $_SESSION['errors'] = $errors;
             }
         }
-        header('Location: admin.php');
+        header('Location: ../admin.php');
     }else{
-        header('Location: index.php'); 
+        header('Location: ../index.php'); 
     } 
 ?>
