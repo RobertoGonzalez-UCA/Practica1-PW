@@ -43,10 +43,14 @@
         <?php endif; ?>
 
         <form  action="login.php" method="POST">
-            <label style="text-align:center;"for="email">Email</label>
+            <label style="margin: 0 auto;
+    text-align: center;
+    width: 200px;"for="email">Email</label>
             <input style="max-width: 200px; margin: 0px auto;" type="email" name="email" required>
 
-            <label style="text-align:center;" for="password">Contraseña</label>
+            <label style="margin: 0 auto;
+    text-align: center;
+    width: 200px;" for="password">Contraseña</label>
             <input style="max-width: 200px;margin: 0px auto;"type="password" name="password" required>
 
             <input style="margin: 10px auto;" type="submit" value="Entrar">
