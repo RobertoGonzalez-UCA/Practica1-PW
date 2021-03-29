@@ -14,29 +14,30 @@
 <!-- VER EXAMEN -->
 <div class="bloque">
     <h3>Hacer examen</h3>
+    <form  action="finish_exam.php" method="POST">
     <?php 
         require_once 'includes/connection.php';
         $current_uid = $_SESSION['user']['uid'];
 
-        $query = "SELECT * FROM exams INNER JOIN examquestions on exams.examid = examquestions.examid INNER JOIN questions on questions.questionid = examquestions.questionid WHERE exams.examid = 2";
+        $query = "SELECT * FROM exams INNER JOIN examquestions on exams.examid = examquestions.examid INNER JOIN questions on questions.questionid = examquestions.questionid WHERE exams.examid = {$_POST['subject-selected']}";
         $result = mysqli_query($db,$query);
         if($result){
             for($i=1;$i<=mysqli_num_rows($result);$i++){
                 $row = $result->fetch_array(MYSQLI_ASSOC);
-                printf ("<span>PREGUNTA DEL EXAMEN %s ES %s</span><br>", $row["examid"], $row["text"]);
+                printf ("<br><b>%s</b><br><br>", $row["text"]);
                 $query2 = "SELECT * FROM answers INNER JOIN questions on answers.questionid = questions.questionid WHERE questions.questionid = {$row["questionid"]} ";
                 $result2 = mysqli_query($db,$query2);
                 if($result2){
                     for($j=1;$j<=mysqli_num_rows($result2);$j++){
                         $row2 = $result2->fetch_array(MYSQLI_ASSOC);
-                        printf ("<span>%s</span><br>", $row2["answertext"]);
+                        printf ("<input type='radio' id='%s' name='%s' value='%s'> <label for='%s'>%s</label>", $row2["answerid"], $row2["questionid"], $row2["answerid"], $row2["answerid"], $row2["answertext"]);
                     }
                 }
             }
         }
-    ?>
-    
-        <a class="boton boton-rojo" href="alumn.php">Volver</a>
+        ?>
+    </form>
+        <a class="boton boton-rojo" href="javascript: history.go(-1)">Volver</a>
 </div>
 
 <?php else: ?>

@@ -29,7 +29,7 @@
     ?>
     
     <?php if(mysqli_num_rows($result) > 0): ?>
-    <form action="get_exam.php" method="GET">
+    <form action="get_exam.php" method="POST">
             <br>
             <span>Elige un examen: </span>
             <select name="subject-selected">
@@ -50,7 +50,7 @@
             <input type="submit" value="Hacer examen">
         </form>
         <?php endif; ?>
-        <a class="boton boton-rojo" href="alumn.php">Volver</a>
+        <a class="boton boton-rojo" href="javascript: history.go(-1)">Volver</a>
 </div>
 
 <?php else: ?>

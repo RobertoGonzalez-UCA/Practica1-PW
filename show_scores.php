@@ -43,7 +43,7 @@
             ?>
             <br><br>
         </div>
-        <a class="boton boton-rojo" href="alumn.php">Volver</a>
+        <a class="boton boton-rojo" href="javascript: history.go(-1)">Volver</a>
 </div>
 
 <?php else: ?>
