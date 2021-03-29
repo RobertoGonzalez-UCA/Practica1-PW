@@ -11,33 +11,36 @@
 <?php require_once 'includes/helpers.php'; ?><?php require_once 'includes/helpers.php'; ?>
 <?php require_once 'includes/connection.php'; ?>
 <?php if($_SESSION['user']['rol'] == 'alumno'): ?>
+<?php $nota = 1 ?>
 <!-- VER EXAMEN -->
 <div class="bloque">
     <h3>Hacer examen</h3>
     <form  action="finish_exam.php" method="POST">
-    <?php 
-        require_once 'includes/connection.php';
-        $current_uid = $_SESSION['user']['uid'];
-
-        $query = "SELECT * FROM exams INNER JOIN examquestions on exams.examid = examquestions.examid INNER JOIN questions on questions.questionid = examquestions.questionid WHERE exams.examid = {$_POST['subject-selected']}";
-        $result = mysqli_query($db,$query);
-        if($result){
-            for($i=1;$i<=mysqli_num_rows($result);$i++){
-                $row = $result->fetch_array(MYSQLI_ASSOC);
-                printf ("<br><b>%s</b><br><br>", $row["text"]);
-                $query2 = "SELECT * FROM answers INNER JOIN questions on answers.questionid = questions.questionid WHERE questions.questionid = {$row["questionid"]} ";
-                $result2 = mysqli_query($db,$query2);
-                if($result2){
-                    for($j=1;$j<=mysqli_num_rows($result2);$j++){
-                        $row2 = $result2->fetch_array(MYSQLI_ASSOC);
-                        printf ("<input type='radio' id='%s' name='%s' value='%s'> <label for='%s'>%s</label>", $row2["answerid"], $row2["questionid"], $row2["answerid"], $row2["answerid"], $row2["answertext"]);
+        <?php 
+            require_once 'includes/connection.php';
+            $current_uid = $_SESSION['user']['uid'];
+            $query = "SELECT * FROM exams INNER JOIN examquestions on exams.examid = examquestions.examid INNER JOIN questions on questions.questionid = examquestions.questionid WHERE exams.examid = {$_POST['exam-selected']}";
+            $result = mysqli_query($db,$query);
+            if($result){
+                for($i=1;$i<=mysqli_num_rows($result);$i++){
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                    printf ("<br><b>%s</b><br><br>", $row["text"]);
+                    $query2 = "SELECT * FROM answers INNER JOIN questions on answers.questionid = questions.questionid WHERE questions.questionid = {$row["questionid"]} ";
+                    $result2 = mysqli_query($db,$query2);
+                    if($result2){
+                        for($j=1;$j<=mysqli_num_rows($result2);$j++){
+                            $row2 = $result2->fetch_array(MYSQLI_ASSOC);
+                            printf ("<label for='%s'><input type='radio' id='%s' name='%s' value='%s'> %s</label>", $row2["answerid"], $row2["answerid"], $nota, $row2["value"], $row2["answertext"]);
+                        }
+                        $nota = $nota + 1;
                     }
                 }
+                printf ("<input type='hidden' id='examen%s' name='exam-selected' value='%s'>", $_POST['exam-selected'], $_POST['exam-selected']);
             }
-        }
         ?>
+        <br><br>
+        <input type="submit" value="Enviar respuestas y terminar">
     </form>
-        <a class="boton boton-rojo" href="javascript: history.go(-1)">Volver</a>
 </div>
 
 <?php else: ?>

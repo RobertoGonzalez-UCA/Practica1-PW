@@ -32,7 +32,7 @@
     <form action="get_exam.php" method="POST">
             <br>
             <span>Elige un examen: </span>
-            <select name="subject-selected">
+            <select name="exam-selected">
             <?php 
                 require_once 'includes/connection.php';
                 $current_uid = $_SESSION['user']['uid'];
