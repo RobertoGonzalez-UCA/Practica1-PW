@@ -8,12 +8,12 @@
     <title>Modificar pregunta - Profesor</title>
 </head>
 <body>
-<?php require_once '../includes/helpers.php'; ?>
-<?php require_once '../includes/connection.php'; ?>
-
     <!-- Modificar pregunta -->
     <div class="bloque">
     <?php 
+    require_once '../includes/helpers.php';
+    require_once '../includes/connection.php';
+    
     $question_id = mysqli_real_escape_string($db,$_POST['cbx_question']);
     $question_text = mysqli_real_escape_string($db, $_POST['new_question']);
     $query = sprintf("UPDATE `questions` SET `text` = '%s' WHERE `questionid`= '%s'", $question_text, $question_id );
@@ -46,7 +46,7 @@
     ?>
 
     <br>
-    <a class="boton boton-celeste" href="../teacher_functions/modify_question.php">Volver</a>
+    <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
     </div>
 </body>
 </html>

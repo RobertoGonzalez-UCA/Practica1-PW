@@ -68,7 +68,7 @@
             }
         ?>
         <br>
-        <a class="boton boton-celeste" href="../teacher_functions/create_question.php">Volver</a>
+        <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
     </div>
 </body>
 </html>

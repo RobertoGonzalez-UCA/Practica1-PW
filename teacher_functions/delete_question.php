@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Añadir pregunta - Profesor</title>
+    <title>Eliminar pregunta - Profesor</title>
 
     <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
 		
@@ -13,6 +13,10 @@
 			$(document).ready(function(){
 				$("#cbx_subject").change(function () {
 					
+                    $('#cbx_question').find('option').remove().end().append('<option value=""></option>').val('');
+                    $('#answers').find('h3').remove().end();
+                    $('#answers').find('div').remove().end();
+
 					$("#cbx_subject option:selected").each(function () {
 						subjectid = $(this).val();
 						$.post("/practica1/includes/get_units.php", { subjectid: subjectid }, function(data){
@@ -21,13 +25,37 @@
 					});
 				})
 			});
+
+            $(document).ready(function(){
+				$("#cbx_unit").change(function () {
+					
+					$("#cbx_unit option:selected").each(function () {
+						unitid = $(this).val();
+						$.post("/practica1/includes/get_questions.php", { unitid: unitid }, function(data){
+							$("#cbx_question").html(data);
+						});            
+					});
+				})
+			});
+
+            $(document).ready(function(){
+				$("#cbx_question").change(function () {
+					
+					$("#cbx_question option:selected").each(function () {
+						questionid = $(this).val();
+						$.post("/practica1/includes/get_answers.php", { questionid: questionid }, function(data){
+							$("#answers").html(data);
+						});            
+					});
+				})
+			});
 		</script>
 </head>
 <body>
-    <!-- Añadir pregunta -->
+    <!-- Eliminar pregunta -->
     <div class="bloque">
-        <h3>Añadir pregunta</h3>
-        <form id="combo" name="combo" action="../includes/add_question.php" method="POST">
+    <h3>Eliminar pregunta</h3>
+    <form id="combo" name="combo" action="../includes/remove_question.php" method="POST">
             <?php 
             require_once '../includes/helpers.php';
             require_once '../includes/connection.php';
@@ -38,11 +66,13 @@
                 echo "Impartes <b>", mysqli_num_rows($result),"</b> asignaturas. <br><br>";
             ?>
 
-            <!-- Asignatura y tema -->
+            <!-- Asignatura, tema y pregunta -->
             <label for="cbx_subject">Elige una asignatura: 
                 <select name="cbx_subject" id="cbx_subject" required>
                     <option value="">Selecciona asignatura</option>
                     <?php 
+                    $query = "SELECT S.name, S.subjectid FROM users U, usersubjects US, subjects S WHERE U.uid = '1' AND US.uid = U.uid AND US.subjectid = S.subjectid";
+                    $result = mysqli_query($db,$query);
                     while($row = $result->fetch_assoc()) { ?>
                         <option value="<?php echo $row['subjectid']; ?>"><?php echo $row['name']; ?></option>
                     <?php } ?>
@@ -53,40 +83,21 @@
                     <option value="">Selecciona tema</option>
                 </select>
             </label>
-            
-            <br><hr><br>
+            <label for="cbx_question">Elige una pregunta: 
+                <select name="cbx_question" id="cbx_question" required>
+                    <option value="">Selecciona pregunta</option>
+                </select>
+            </label>
+            <br>
 
-            <!-- Pregunta -->
-            <label for="new_question">Escriba la pregunta a insertar:</label>
-            <input style="width: 50%;" type="text" name="new_question" required>
-
-            <br><hr><br>
-
-            <!-- Respuestas -->
-            <label for="answer1">Respuesta 1:</label>
-            <div>
-            <input style="display: inline-block; margin-right: 10px; width: 50%;" type="text" name="answer1_text" required>
-            <input style="display: inline-block;" type="radio" name="answer" value="answer1" checked>
-            </div>
-
-            <label for="answer2">Respuesta 2:</label>
-            <div>
-            <input style="display: inline-block; margin-right: 10px; width: 50%;" type="text" name="answer2_text" required>
-            <input style="display: inline-block;" type="radio" name="answer" value="answer2">
-            </div>
-
-            <label for="answer3">Respuesta 3:</label>
-            <div>
-            <input style="display: inline-block; margin-right: 10px; width: 50%;" type="text" name="answer3_text" required>
-            <input style="display: inline-block;" type="radio" name="answer" value="answer3">
-            </div>
-
-            <input type="submit" name="añadir" value="Añadir">
+            <input type="submit" name="delete" value="Eliminar">
         </form>
-        <?php } else {
+
+        <?php } else
+                {
                     echo "No impartes ninguna asignatura.<br>";
                 }
-            ?>
+        ?>
         <br>
         <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
     </div>
