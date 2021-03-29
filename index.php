@@ -32,7 +32,7 @@
 <?php if(!isset($_SESSION['user'])): ?>
 
     <!-- LOGIN -->
-    <div id="login" class="bloque">
+    <div id="login" class="bloque fondo" >
         <h3 style="text-align:center;">Identifícate</h3>
         
         <!-- ERROR LOGIN -->
