@@ -48,7 +48,7 @@
     
                 if($result && mysqli_num_rows($result) >= 1){
                     
-                    $html = "<select style='margin-bottom: 10px;' name='degree_id'>
+                    $html = "<select style='margin-bottom: 10px;' name='degree_id' required>
                     ";
                     while($degrees = mysqli_fetch_assoc($result)){
                         $degree = $degrees['name'];
@@ -65,22 +65,25 @@
             <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'degrees') : '' ?>
 
 
-            <!-- <label for="coordinator">Elige un Coordinador</label>
+            <label for="coordinator_id">Elige un Coordinador</label>
             <?php
-                /* $sql = "SELECT name FROM coordinators";
+                $sql = "SELECT uid,name,surname FROM users WHERE rol = 'profesor'";
                 $result = mysqli_query($db,$sql);
-    
+ 
                 if($result && mysqli_num_rows($result) >= 1){
                     
-                    $html = "<select style='margin-bottom: 10px;name='coordinator'>
-                    ";
+                    $html = "<select style='margin-bottom: 10px;' name='coordinator_id' required>";
                     while($coordinators = mysqli_fetch_assoc($result)){
-                        $coordinator = $coordinators['name'];
-                        $html .= "<option value='$coordinator'>$coordinator</option>";
+                        $coordinator_name = $coordinators['name'];
+                        $coordinator_surname = $coordinators['surname'];
+                        $coordinator_id = $coordinators['uid'];
+
+                        $html .= "<option value='$coordinator_id'>$coordinator_name $coordinator_surname</option>";
                     }
+                    $html .= "</select>";
                     echo $html;
-                } */
-            ?> -->
+                }
+            ?> 
 
             <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'degrees') : '' ?>
 

@@ -10,7 +10,7 @@
             $email = isset($_POST['email']) ? mysqli_real_escape_string($db,$_POST['email']) : false;
             $email_not_modify = isset($_POST['email_not_modify']) ? mysqli_real_escape_string($db,$_POST['email_not_modify']) : false;
 
-            $password = isset($_POST['pass']) ? mysqli_real_escape_string($db,$_POST['pass']) : false;
+            /* $password = isset($_POST['pass']) ? mysqli_real_escape_string($db,$_POST['pass']) : false; */
 
             $rol = isset($_POST['rol']) ? mysqli_real_escape_string($db,$_POST['rol']) : false;
     
@@ -75,15 +75,11 @@
                             "name = '$nombre',  " . 
                             "surname = '$apellidos',  " .  
                             "email = '$email',  " . 
-                            "pass = '$password',  " .
                             "rol = '$rol'  " . 
                             "WHERE uid = " . $isset_user['uid'];
                     $guardar = mysqli_query($db,$sql);
     
                     if($guardar){
-                        /* $_SESSION['user']['name'] = $nombre;
-                        $_SESSION['user']['surname'] = $apellidos;
-                        $_SESSION['user']['email'] = $email; */
                         $_SESSION['completed'] = "El usuario se ha modificado con éxito";
                     }else{
                         $_SESSION['errors']['general'] = "Fallo al actualizar tus datos";

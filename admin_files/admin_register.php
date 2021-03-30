@@ -49,30 +49,46 @@
             <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'email') : '' ?>
 
             <label for="rol">Rol</label>
-            <input type="text" name="rol" required>
+
+            <select name="rol" id="rol" style="margin-bottom: 10px;" onchange="JSfunction()" required>
+                <option value="profesor">Profesor</option>
+                <option value="admin">Admin</option>
+                <option value="alumno">Alumno</option>
+            </select>
+
+
             <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'rol') : '' ?>
 
             <label for="password">Contraseña</label>
             <input type="password" name="password" required>
             <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'password') : '' ?>
 
-            <h4>Asignaturas</h4>
-            <input type="radio" name="pw" id="pw" value="pw" />
-            <label class="inline" for="pw">  Programación Web</label>
-            <br/>
 
-            <input type="radio" name="as" id="as" value="as"  />
-            <label class="inline" for="as"> Administración de Servidores</label>
-            <br/>
+            <h4 id="id-subjects">Imparte: </h4>
+            <?php
+                $sql = "SELECT * FROM subjects";
+                $result = mysqli_query($db,$sql);
 
-            <input type="radio" name="md" id="md" value="md" />
-            <label class="inline" for="md"> Matemática Discreta</label>
-            <br/>
+                if($result && mysqli_num_rows($result) > 1){
+                    
+                    $html = "<div id='subjects-block'>";
+                    while($subjects = mysqli_fetch_assoc($result)){
+                        $subject = $subjects['name'];
+                        $subject_id = $subjects['subjectid'];
+
+
+                        $html .= "<input type='radio' name='$subject' id='$subject' value='$subject' />
+                        <label class='inline' for='$subject'> $subject</label> <br>";
+                    }
+                    $html .= "</div>";
+                    echo $html;
+                }
+            ?>
+            <br>
 
             <input type="submit" value="Registrar">
         </form>
         <br>
-        <a class="boton boton-naranja" href="user_data.php">Mis datos</a>
         <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
         <a class="boton boton-rojo" href="../logout.php">Cerrar sesión</a>
         <?php borrarErrores(); ?> 
@@ -84,3 +100,27 @@
   
 </body>
 </html>
+
+<script>
+
+    function JSfunction(){
+        const $btnSelect = document.getElementById("rol").value;
+    
+        if($btnSelect == "alumno"){
+            const $title = document.getElementById("id-subjects").innerHTML = "Matriculado en: "; 
+            const $subjectsBlock = document.getElementById("subjects-block");  
+
+            $subjectsBlock.style.visibility = "visible"; 
+        }else if($btnSelect == "profesor"){
+            const $title = document.getElementById("id-subjects").innerHTML = "Imparte: ";
+            const $subjectsBlock = document.getElementById("subjects-block");  
+
+            $subjectsBlock.style.visibility = "visible";  
+        }else if($btnSelect == "admin"){
+            const $title = document.getElementById("id-subjects").innerHTML = "";
+            const $subjectsBlock = document.getElementById("subjects-block");  
+            $subjectsBlock.style.visibility = "hidden";
+        }
+    }
+    
+</script>

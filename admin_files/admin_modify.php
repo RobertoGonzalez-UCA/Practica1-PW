@@ -40,7 +40,7 @@
             $sql = "SELECT * FROM users";
             $result = mysqli_query($db,$sql);
 
-            if($result && mysqli_num_rows($result) > 1){
+            if($result && mysqli_num_rows($result) >= 1){
                 
                 $counter = 1;
                 $html = "";
@@ -73,11 +73,6 @@
                             <label for='email_not_modify'></label>
                             <input type='hidden' name='email_not_modify' value='$email' required>
                             
-
-                            <label for='pass'>Contraseña</label>
-                            <input style='width: 200px; type='password' name='pass' value='$pass' required>
-                            <?php echo isset($errors) ? mostrarError($errors,'pass') : '' ?>
-
                             <label for='rol'>Rol</label>
                             <input style='width: 200px; type='text' name='rol' value='$rol' required>
                             <?php echo isset($errors) ? mostrarError($errors,'rol') : '' ?>
@@ -103,11 +98,6 @@
                     $verify = true;
                 }
 
-                /* if($verify){
-                    $_SESSION['user'] = $usuario;
-                }else{
-                    $_SESSION['error_login'] = 'Login incorrecto....';
-                } */
             }else{
                 $_SESSION['error_login'] = 'Login incorrecto....';
             }
