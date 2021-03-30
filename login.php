@@ -18,7 +18,9 @@ require_once 'includes/connection.php';
 
         if($login && mysqli_num_rows($login) == 1){
             $usuario = mysqli_fetch_assoc($login);
-            /* $verify = password_verify($password,$usuario['pass']); */
+
+            $verify = password_verify($password,$usuario['pass']);
+
             if($password == $usuario['pass']){
                 $verify = true;
             }
