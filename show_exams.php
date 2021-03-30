@@ -36,14 +36,16 @@
             <?php 
                 require_once 'includes/connection.php';
                 $current_uid = $_SESSION['user']['uid'];
-                $query = "SELECT examid, name from exams INNER JOIN subjects ON exams.subjectid=subjects.subjectid where uid = $current_uid AND estado = 'PENDING'"; 
+                $query = "SELECT * from exams INNER JOIN subjects ON exams.subjectid=subjects.subjectid where uid = $current_uid AND estado = 'PENDING'"; 
                 $result = mysqli_query($db,$query);
                 if($result){
                     for($i=1;$i<=mysqli_num_rows($result);$i++){
                         $row = $result->fetch_array(MYSQLI_ASSOC);
                         printf ("<option value=%s>%s</option>", $row["examid"], $row["name"]);
+                        $subject = $row["subjectid"];
                     }
                 }
+                printf ("<input type='hidden' id='subject%s' name='subject-selected' value='%s'>", $subject, $subject);
             ?>
             </select>
             <br><br>

@@ -11,6 +11,7 @@
 <?php require_once 'includes/helpers.php'; ?><?php require_once 'includes/helpers.php'; ?>
 <?php require_once 'includes/connection.php'; ?>
 <?php if($_SESSION['user']['rol'] == 'alumno'): ?>
+
 <?php $nota = 1 ?>
 <!-- VER EXAMEN -->
 <div class="bloque">
@@ -19,7 +20,7 @@
         <?php 
             require_once 'includes/connection.php';
             $current_uid = $_SESSION['user']['uid'];
-            $query = "SELECT * FROM exams INNER JOIN examquestions on exams.examid = examquestions.examid INNER JOIN questions on questions.questionid = examquestions.questionid WHERE exams.examid = {$_POST['exam-selected']}";
+            $query = "SELECT * FROM questions JOIN units on questions.unitid = units.unitid WHERE units.subjectid =  {$_POST['subject-selected']} ORDER BY RAND ( )  LIMIT 10"; 
             $result = mysqli_query($db,$query);
             if($result){
                 for($i=1;$i<=mysqli_num_rows($result);$i++){
@@ -30,8 +31,9 @@
                     if($result2){
                         for($j=1;$j<=mysqli_num_rows($result2);$j++){
                             $row2 = $result2->fetch_array(MYSQLI_ASSOC);
-                            printf ("<label for='%s'><input type='radio' id='%s' name='%s' value='%s'> %s</label>", $row2["answerid"], $row2["answerid"], $nota, $row2["value"], $row2["answertext"]);
+                            printf ("<label for='%s'><input type='radio' id='answer%s' name='%s' value='%s'> %s</label>", $row2["answerid"], $row2["answerid"], $nota, $row2["value"], $row2["answertext"]);
                         }
+                        printf ("<label for='%s'><input type='radio' id='answer%s' name='%s' value='0' checked> Dejar en blanco</label>", $row2["answerid"], $row2["answerid"], $nota);
                         $nota = $nota + 1;
                     }
                 }

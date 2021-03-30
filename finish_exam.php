@@ -18,7 +18,7 @@
     <br>
     <?php
         printf("<span>Tu nota es de %s</span><br>", $resultado) ;
-        $query = "UPDATE exams SET estado='DONE', nota={$resultado} WHERE examid = {$_POST['exam-selected']}" ; 
+        $query = "UPDATE exams SET estado='DONE', nota = {$resultado} WHERE examid = {$_POST['exam-selected']}" ; 
         if (mysqli_query($db, $query)) {
             echo "Examen finalizado.";
         } else {
