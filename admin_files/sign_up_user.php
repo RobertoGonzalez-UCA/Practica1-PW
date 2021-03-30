@@ -150,10 +150,8 @@
     
                                 $save = mysqli_query($db,$sql);
                             }
-                            die(var_dump($subject_uids));
                         }
                     }else{
-                        /* Primera Inserción */
                         $sql = "INSERT INTO users VALUES(null,'$name','$surname','$email','$password','$rol')";
                         $save = mysqli_query($db,$sql);
                 

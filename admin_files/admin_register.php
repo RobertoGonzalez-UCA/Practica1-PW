@@ -35,7 +35,7 @@
         
         <h4> Registro de usuarios</h4>
         <br>
-        <form action="sign_up.php" method="POST">
+        <form action="sign_up_user.php" method="POST">
             <label for="name">Nombre</label>
             <input type="text" name="name" required>
             <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'name') : '' ?>
@@ -91,7 +91,7 @@
         <br>
         <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
         <a class="boton boton-rojo" href="../logout.php">Cerrar sesión</a>
-        <?php borrarErrores(); ?> 
+        <?php borrarAlertas(); ?> 
     </div>
     
 <?php else: ?>
@@ -99,28 +99,5 @@
 <?php endif; ?>
   
 </body>
+<script src="../js/admin_register.js"></script>
 </html>
-
-<script>
-
-    function JSfunction(){
-        const $btnSelect = document.getElementById("rol").value;
-    
-        if($btnSelect == "alumno"){
-            const $title = document.getElementById("id-subjects").innerHTML = "Matriculado en: "; 
-            const $subjectsBlock = document.getElementById("subjects-block");  
-
-            $subjectsBlock.style.visibility = "visible"; 
-        }else if($btnSelect == "profesor"){
-            const $title = document.getElementById("id-subjects").innerHTML = "Imparte: ";
-            const $subjectsBlock = document.getElementById("subjects-block");  
-
-            $subjectsBlock.style.visibility = "visible";  
-        }else if($btnSelect == "admin"){
-            const $title = document.getElementById("id-subjects").innerHTML = "";
-            const $subjectsBlock = document.getElementById("subjects-block");  
-            $subjectsBlock.style.visibility = "hidden";
-        }
-    }
-    
-</script>

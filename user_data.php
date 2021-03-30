@@ -56,7 +56,7 @@
                 <br>
                 <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
                 <a class="boton boton-rojo" href="../logout.php">Cerrar sesión</a>
-                <?php borrarErrores(); ?>
+                <?php borrarAlertas(); ?>
             </div>
     </div>
 <?php else: ?>

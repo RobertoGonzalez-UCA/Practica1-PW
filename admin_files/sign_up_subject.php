@@ -9,12 +9,10 @@
             $degree_id = isset($_POST['degree_id']) ? mysqli_real_escape_string($db,trim($_POST['degree_id'])) : false;
             $coordinator_id = isset($_POST['coordinator_id']) ? mysqli_real_escape_string($db,trim($_POST['coordinator_id'])) : false;
             
-        
-            // VALIDACIONES
             $errors = array();
         
             // Validar nombre
-            if(!empty($name) && !is_numeric($name) && !preg_match("/[0-9]/",$name)){
+            if(!empty($name) && !preg_match("/[0-9]/",$name)){
                 $name_validated = true;
             }else{
                 $name_validated = false;

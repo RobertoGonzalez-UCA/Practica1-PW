@@ -1,6 +1,5 @@
 <?php
-
-require_once 'includes/connection.php';
+    require_once 'includes/connection.php';
 
     if(isset($_POST)){
 
@@ -9,7 +8,6 @@ require_once 'includes/connection.php';
             unset($_SESSION['error_login']);
         }
 
-        //Recoger datos formulario
         $email = trim($_POST['email']);
         $password = $_POST['password'];
 
@@ -20,8 +18,8 @@ require_once 'includes/connection.php';
             $usuario = mysqli_fetch_assoc($login);
 
             $verify = password_verify($password,$usuario['pass']);
-
-            if($password == $usuario['pass']){
+            
+            if(!$verify && $password == $usuario['pass']){
                 $verify = true;
             }
 
@@ -35,5 +33,4 @@ require_once 'includes/connection.php';
         }
     }
     header('Location: index.php');
-
 ?>

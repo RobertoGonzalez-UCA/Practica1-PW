@@ -28,7 +28,6 @@
 
             if(count($errores) == 0){
     
-
                 /* Comprobar si el id de la asignatura existe */
                 $sql = "SELECT subjectid FROM subjects WHERE subjectid = '$id'";
                 $result = mysqli_query($db,$sql);

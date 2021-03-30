@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets//css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <title>Admin Page</title>
 </head>
@@ -34,13 +34,13 @@
         ?>
 
         
-        <a class="boton boton-celeste" href="admin_files/admin_register.php">Registrar usuarios</a>
-        <a class="boton boton-naranja" href="admin_files/admin_modify.php">Modificar usuarios</a>
-        <a class="boton boton-celeste" href="admin_files/subject_register.php">Registrar asignaturas</a>
-        <a class="boton boton-naranja" href="admin_files/subject_modify.php">Modificar asignaturas</a>
+        <a class="boton boton-verde" href="admin_files/admin_register.php">Registrar usuarios</a>
+        <a class="boton boton-celeste" href="admin_files/admin_modify.php">Modificar usuarios</a>
+        <a class="boton boton-verde" href="admin_files/subject_register.php">Registrar asignaturas</a>
+        <a class="boton boton-celeste" href="admin_files/subject_modify.php">Modificar asignaturas</a>
 
         <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
-        <?php borrarErrores(); ?> 
+        <?php borrarAlertas(); ?> 
     </div>
     
 <?php else: ?>

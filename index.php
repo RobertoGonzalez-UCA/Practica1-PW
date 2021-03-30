@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets//css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Login</title>
 </head>
 <body>
@@ -27,9 +27,7 @@
                 header('Location: admin.php');
             }
         ?>
-<?php endif; ?>
-
-<?php if(!isset($_SESSION['user'])): ?>
+<?php else: ?>
 
     <!-- LOGIN -->
     <div id="login" class="bloque fondo" >
@@ -43,14 +41,10 @@
         <?php endif; ?>
 
         <form  action="login.php" method="POST">
-            <label style="margin: 0 auto;
-    text-align: center;
-    width: 200px;"for="email">Email</label>
+            <label style="margin: 0 auto; text-align: center; width: 200px;"for="email">Email</label>
             <input style="max-width: 200px; margin: 0px auto;" type="email" name="email" required>
 
-            <label style="margin: 0 auto;
-    text-align: center;
-    width: 200px;" for="password">Contraseña</label>
+            <label style="margin: 0 auto; text-align: center; width: 200px;" for="password">Contraseña</label>
             <input style="max-width: 200px;margin: 0px auto;"type="password" name="password" required>
 
             <input style="margin: 10px auto;" type="submit" value="Entrar">
@@ -58,15 +52,18 @@
     </div>
 
     <div class="bloque">
-    © 2021 Copyright:
-    <br>
-<p>   ► Juan Carlos Camacho Carribero
-</p>
-<p>   ► Roberto González Álvarez
-</p>
-<p>  ► Rafael Rodríguez Calvente 
-</p>    
-</div>
+        © 2021 Copyright:
+        <br>
+        <p>   
+            ► Juan Carlos Camacho Carribero
+        </p>
+        <p>   
+            ► Roberto González Álvarez
+        </p>
+        <p>  
+            ► Rafael Rodríguez Calvente 
+        </p>    
+    </div>
 
     
 <?php endif; ?>

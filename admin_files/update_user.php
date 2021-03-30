@@ -9,16 +9,12 @@
             $apellidos = isset($_POST['apellidos']) ? mysqli_real_escape_string($db,trim($_POST['apellidos'])) : false;
             $email = isset($_POST['email']) ? mysqli_real_escape_string($db,$_POST['email']) : false;
             $email_not_modify = isset($_POST['email_not_modify']) ? mysqli_real_escape_string($db,$_POST['email_not_modify']) : false;
-
-            /* $password = isset($_POST['pass']) ? mysqli_real_escape_string($db,$_POST['pass']) : false; */
-
             $rol = isset($_POST['rol']) ? mysqli_real_escape_string($db,$_POST['rol']) : false;
     
             $errores = array();
     
             // Validar nombre
-            /* neccesary preg_match? */
-            if(!empty($nombre) && !is_numeric($nombre) && !preg_match("/[0-9]/",$nombre)){
+            if(!empty($nombre) && !preg_match("/[0-9]/",$nombre)){
                 $nombre_validado = true;
             }else{
                 $nombre_validado = false;
@@ -26,7 +22,7 @@
             }
     
             // Validar apellidos
-            if(!empty($apellidos) && !is_numeric($apellidos) && !preg_match("/[0-9]/",$apellidos)){
+            if(!empty($apellidos) && !preg_match("/[0-9]/",$apellidos)){
                 $apellidos_validado = true;
             }else{
                 $apellidos_validado = false;
@@ -50,7 +46,7 @@
             }
 
             // Validar rol
-            if(!empty($rol) && !is_numeric($rol) && !preg_match("/[0-9]/",$rol)){
+            if(!empty($rol) && !preg_match("/[0-9]/",$rol)){
                 $rol_validado = true;
             }else{
                 $rol_validado = false;

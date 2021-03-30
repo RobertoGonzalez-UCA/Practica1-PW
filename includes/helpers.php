@@ -7,19 +7,16 @@
         }
     }
 
-    function borrarErrores(){
-        $borrado = false;
+    function borrarAlertas(){
 
         if(isset($_SESSION['errors'])){
             $_SESSION['errors'] = null;
             unset($_SESSION['errors']);
-            $borrado = true;
         }
 
         if(isset($_SESSION['completed'])){
             $_SESSION['completed'] = null;
             unset($_SESSION['completed']);
-            $borrado = true;
         }
     }  
 ?>
