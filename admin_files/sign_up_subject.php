@@ -34,12 +34,8 @@
                 $coordinator_validated = false;
                 $errors['coordinator'] = "El coordinador no es válido";
             }
-            
-            $save_user = false;
         
             if(count($errors) == 0){
-                $save_user = true;
-
                 $name_without_spaces = str_replace(' ','',$name);
                 $sql = "INSERT INTO subjects VALUES(null,'$name_without_spaces','$degree_id','$coordinator_id')";
                 $save = mysqli_query($db,$sql);
@@ -55,7 +51,7 @@
                 $_SESSION['errors'] = $errors;
             }
         }
-        header('Location: ../admin.php');
+        header('Location: subject_register.php');
     }else{
         header('Location: ../index.php'); 
     } 

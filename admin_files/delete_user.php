@@ -10,7 +10,6 @@
             $errores = array();
     
             // Validar nombre
-            /* neccesary preg_match? */
             if(!empty($uid) && is_numeric($uid)){
                 $uid_validado = true;
             }else{
@@ -18,13 +17,8 @@
                 $errores['nombre'] = "El nombre no es válido";
             }
     
-    
-            $guardar_usuario = false;
-    
             if(count($errores) == 0){
-                $usuario = $_SESSION['user'];
-                $guardar_usuario = true;
-    
+
                 /* Comprobar si el usuario a borrar existe en la tabla users*/
                 $sql = "SELECT uid, email FROM users WHERE uid = '$uid'";
                 $isset_email = mysqli_query($db,$sql);
@@ -40,10 +34,10 @@
                     if(isset($isset_user['uid'])){
                         /* Borrar usuario de usersubjects */
                         $sql_2 = "DELETE FROM usersubjects WHERE uid = " . $isset_user['uid'];
-                        $guardar = mysqli_query($db,$sql_2);
+                        $save = mysqli_query($db,$sql_2);
 
                         
-                        if($guardar){
+                        if($save){
                             $_SESSION['completed'] = "El usuario se ha borrado con éxito";
                         }else{
                             $_SESSION['errors']['general'] = "Fallo al actualizar tus datos";
@@ -52,23 +46,22 @@
                     
                     /* Borrar usuario de users */
                     $sql = "DELETE FROM users WHERE uid = " . $isset_user['uid'];
-                    $guardar = mysqli_query($db,$sql);
+                    $save = mysqli_query($db,$sql);
 
-                    if($guardar){
+                    if($save){
                         $_SESSION['completed'] = "El usuario se ha borrado con éxito";
                     }else{
                         $_SESSION['errors']['general'] = "Fallo al actualizar tus datos";
                     }
     
                 }else{
-                    $_SESSION['errors']['general'] = "El usuario ya existe";
-                    
+                    $_SESSION['errors']['general'] = "El usuario ya existe"; 
                 }
             }else{
                 $_SESSION['errors'] = $errores;
             }
         }
-        header('Location: ../admin.php');
+        header('Location: admin_modify.php');
     }else{
         header('Location: ../index.php');
     }

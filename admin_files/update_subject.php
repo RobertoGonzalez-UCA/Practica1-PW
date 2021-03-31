@@ -23,7 +23,7 @@
                 $id_validado = true;
             }else{
                 $id_validado = false;
-                $errores['nombre'] = "El id no es válido";
+                $errores['id'] = "El id no es válido";
             }
 
             if(count($errores) == 0){
@@ -44,20 +44,20 @@
                     $guardar = mysqli_query($db,$sql);;
     
                     if($guardar){
-                        $_SESSION['completed'] = "El usuario se ha modificado con éxito";
+                        $_SESSION['completed'] = "La asignatura se ha modificado con éxito";
                     }else{
-                        $_SESSION['errors']['general'] = "Fallo al actualizar tus datos";
+                        $_SESSION['errors']['general'] = "Fallo al actualizar la asignatura";
                     }
     
                 }else{
-                    $_SESSION['errors']['general'] = "El usuario ya existe";
+                    $_SESSION['errors']['general'] = "La asignatura no existe";
                     
                 }
             }else{
                 $_SESSION['errors'] = $errores;
             }
         }
-        header('Location: ../admin.php');
+        header('Location: subject_modify.php');
     }else{
         header('Location: ../index.php');
     }

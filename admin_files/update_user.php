@@ -52,13 +52,8 @@
                 $rol_validado = false;
                 $errores['rol'] = "El rol no es válido";
             }
-    
-            $guardar_usuario = false;
-    
+        
             if(count($errores) == 0){
-                $usuario = $_SESSION['user'];
-                $guardar_usuario = true;
-    
                 /* Comprobar si el email ya existe */
                 $sql = "SELECT uid, email FROM users WHERE email = '$email_not_modify'";
                 $isset_email = mysqli_query($db,$sql);
@@ -73,9 +68,9 @@
                             "email = '$email',  " . 
                             "rol = '$rol'  " . 
                             "WHERE uid = " . $isset_user['uid'];
-                    $guardar = mysqli_query($db,$sql);
+                    $save = mysqli_query($db,$sql);
     
-                    if($guardar){
+                    if($save){
                         $_SESSION['completed'] = "El usuario se ha modificado con éxito";
                     }else{
                         $_SESSION['errors']['general'] = "Fallo al actualizar tus datos";
@@ -89,7 +84,7 @@
                 $_SESSION['errors'] = $errores;
             }
         }
-        header('Location: ../admin.php');
+        header('Location: admin_modify.php');
     }else{
         header('Location: ../index.php');
     }

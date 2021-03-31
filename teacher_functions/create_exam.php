@@ -16,7 +16,7 @@
     <div class="bloque">
         <h3>Crear examen</h3>
         <?php 
-            require_once 'includes/connection.php';
+            require_once '../includes/connection.php';
             $current_uid = $_SESSION['user']['uid'];
 
             $query = "SELECT * FROM usersubjects WHERE uid = '$current_uid'";

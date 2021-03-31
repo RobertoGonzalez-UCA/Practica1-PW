@@ -15,8 +15,8 @@
 <div class="bloque">    
     <h3> Bienvenido, <?= $_SESSION['user']['name'] . ' ' . $_SESSION['user']['surname'] ?> </h3>
     <h3>Menú profesorado</h3>
-    <a class="boton boton-verde" href="create_exam.php">Poner examen</a>
-    <a class="boton boton-celeste" href="teacher_functions\manage_questions.php">Gestionar preguntas</a>
+    <a class="boton boton-verde" href="teacher_functions/create_exam.php">Poner examen</a>
+    <a class="boton boton-celeste" href="teacher_functions/manage_questions.php">Gestionar preguntas</a>
     <a class="boton boton-naranja" href="user_data.php">Mis datos</a>
     <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
 </div>

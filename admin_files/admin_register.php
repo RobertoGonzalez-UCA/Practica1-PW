@@ -16,7 +16,7 @@
 <?php if($_SESSION['user']['rol'] == 'admin'): ?>
 
     <!-- REGISTRO -->
-    <div id="register" class="bloque">
+    <div id="register" class="bloque fondo">
     <h3> Bienvenido, <?= $_SESSION['user']['name'] . ' ' . $_SESSION['user']['surname'] ?> </h3>
     <h3>Menú administrador</h3>
 
