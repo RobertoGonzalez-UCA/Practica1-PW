@@ -8,9 +8,6 @@
     <title>Añadir pregunta - Profesor</title>
 </head>
 <body>
-<?php require_once '../includes/helpers.php'; ?>
-<?php require_once '../includes/connection.php'; ?>
-
     <!-- Añadir pregunta -->
     <div class="bloque">
         <?php

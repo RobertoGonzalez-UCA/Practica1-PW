@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Poner examen - Profesor</title>
+    <title>Ver estadísticas - Profesor</title>
 
     <script type="text/javascript" src="../assets/js/jquery-3.1.1.min.js"></script>
 		
@@ -15,8 +15,8 @@
 					
 					$("#cbx_subject option:selected").each(function () {
 						subjectid = $(this).val();
-						$.post("/practica1/includes/get_units.php", { subjectid: subjectid }, function(data){
-							$("#cbx_unit").html(data);
+						$.post("/practica1/includes/get_results.php", { subjectid: subjectid }, function(data){
+							$("#results").html(data);
 						});            
 					});
 				})
@@ -24,10 +24,10 @@
 		</script>
 </head>
 <body>
-    <!-- Poner examen -->
+    <!-- Ver estadísticas -->
     <div class="bloque">
-        <h3>Poner examen</h3>
-        <form id="combo" name="combo" action="../includes/add_exam.php" method="POST">
+        <h3>Ver estadísticas</h3>
+        <form id="combo" name="combo" action="" method="POST">
             <?php 
             require_once '../includes/helpers.php';
             require_once '../includes/connection.php';
@@ -49,11 +49,7 @@
                 </select>
             </label>
             <br>
-            <label for="exam_date">Elige una fecha: <input type="date" name="exam_date" required></label>
-            
-            <br>
-
-            <input type="submit" name="añadir" value="Añadir">
+            <div id="results"></div>
         </form>
         <?php } else {
                     echo "No impartes ninguna asignatura.<br>";
