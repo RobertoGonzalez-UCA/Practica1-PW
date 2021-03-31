@@ -20,5 +20,5 @@
 3. Student menu: 
 * Take exams: The exam day of each subject, the enroll students will be access to the exam. This exam will be generated automaticaly by the system, choosing randomly some questions of each unit of the subject.
 * Marks display: When the student answer the questions, their questions will be stored on the data base and the system will correct automaticaly the exam, showing students mark and the failed answers. Obviously, the student could see this information when they need, so, it will be stored on the database.
-3. Admin menu: 
+4. Admin menu: 
 * Users and subjects management: The admin will be able to create, edit, update or delete system users and subjects.
