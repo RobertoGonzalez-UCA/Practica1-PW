@@ -16,10 +16,11 @@
 <div class="bloque">
     <h3>Ver examenes</h3>
     <?php 
+        $time = date ('Y-m-d');
         require_once 'includes/connection.php';
         $current_uid = $_SESSION['user']['uid'];
 
-        $query = "SELECT * FROM exams WHERE uid = '$current_uid' AND estado = 'PENDING'";
+        $query = "SELECT * FROM exams WHERE uid = $current_uid AND estado = 'PENDING' AND date = '$time'";
         $result = mysqli_query($db,$query);
         if(mysqli_num_rows($result) > 0){
             echo "Hay <b>", mysqli_num_rows($result),"</b> examenes disponibles. <br><br>";
@@ -36,7 +37,7 @@
             <?php 
                 require_once 'includes/connection.php';
                 $current_uid = $_SESSION['user']['uid'];
-                $query = "SELECT * from exams INNER JOIN subjects ON exams.subjectid=subjects.subjectid where uid = $current_uid AND estado = 'PENDING'"; 
+                $query = "SELECT * FROM exams INNER JOIN subjects ON exams.subjectid=subjects.subjectid WHERE uid = $current_uid AND estado = 'PENDING' AND date = '$time'"; 
                 $result = mysqli_query($db,$query);
                 if($result){
                     for($i=1;$i<=mysqli_num_rows($result);$i++){
