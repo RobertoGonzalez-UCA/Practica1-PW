@@ -32,12 +32,12 @@
             <?php 
                 require_once 'includes/connection.php';
                 $current_uid = $_SESSION['user']['uid'];
-                $query = "SELECT examid, nota, name from exams INNER JOIN subjects ON exams.subjectid=subjects.subjectid where uid = $current_uid AND estado = 'DONE'"; 
+                $query = "SELECT date, nota, name from exams INNER JOIN subjects ON exams.subjectid=subjects.subjectid where uid = $current_uid AND estado = 'DONE'"; 
                 $result = mysqli_query($db,$query);
                 if($result){
                     for($i=1;$i<=mysqli_num_rows($result);$i++){
                         $row = $result->fetch_array(MYSQLI_ASSOC);
-                        printf ("<span>Tu nota en el examen %s de la asignatura %s es %s</span><br>", $row["examid"], $row["name"], $row["nota"]);
+                        printf ("<span>Tu nota en el examen del día %s de la asignatura %s es %s</span><br>", $row["date"], $row["name"], $row["nota"]);
                     }
                 }
             ?>
