@@ -56,8 +56,8 @@
         $grade_a = $row['grade_a'];
     
         $html = "<br><h3>Estadísticas de $subject_name ($exam_date):</h3>
-        <table>
-            <tr>
+        <table style="border-collapse: collapse;">
+            <tr style="border: 1px solid;">
                 <th>Total alumnos</th>
                 <th>Nota media</th>
                 <th>Nota mínima</th>
@@ -67,7 +67,7 @@
                 <th>Notables</th>
                 <th>Sobresalientes</th>
             </tr>
-            <tr>
+            <tr style="border: 1px solid; text-align: center;">
                 <td>$num_students</td>
                 <td>$avg_grade</td>
                 <td>$min_grade</td>
