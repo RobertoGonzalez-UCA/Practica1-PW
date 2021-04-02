@@ -31,7 +31,7 @@
         $answer = mysqli_real_escape_string($db,$answer['answer']);
         $selected_field = $selected == $answerid ? 1 : 0;
         // $query = "UPDATE `answers` SET `text`='$answer',`value`='$selected' WHERE `answerid`='$answerid'";
-        $query = sprintf("UPDATE `answers` SET `text` = '%s',`value` = '%s' WHERE `answerid` = '%s'", $answer, $selected_field, $answerid);
+        $query = sprintf("UPDATE `answers` SET `answertext` = '%s',`value` = '%s' WHERE `answerid` = '%s'", $answer, $selected_field, $answerid);
         if(!mysqli_query($db,$query)) {
             $error = "Se ha producido un error al modificar algunas respuestas.";
             return;

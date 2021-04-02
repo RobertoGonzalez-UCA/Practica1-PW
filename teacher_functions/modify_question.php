@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Añadir pregunta - Profesor</title>
+    <title>Modificar pregunta - Profesor</title>
 
     <script type="text/javascript" src="../assets/js/jquery-3.1.1.min.js"></script>
 		
@@ -73,7 +73,7 @@ if($_SESSION['user']['rol'] == 'profesor'): ?>
                 <select name="cbx_subject" id="cbx_subject" required>
                     <option value="">Selecciona asignatura</option>
                     <?php 
-                    $query = "SELECT S.name, S.subjectid FROM users U, usersubjects US, subjects S WHERE U.uid = '1' AND US.uid = U.uid AND US.subjectid = S.subjectid";
+                    $query = "SELECT S.name, S.subjectid FROM users U, usersubjects US, subjects S WHERE U.uid = '$current_uid' AND US.uid = U.uid AND US.subjectid = S.subjectid";
                     $result = mysqli_query($db,$query);
                     while($row = $result->fetch_assoc()) { ?>
                         <option value="<?php echo $row['subjectid']; ?>"><?php echo $row['name']; ?></option>

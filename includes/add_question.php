@@ -41,21 +41,21 @@
             $answer3_text = $_POST['answer3_text'];
             
             if($chosen_answer == "answer1") {
-                $query = "INSERT INTO `answers`(`text`, `questionid`, `value`) VALUES ('$answer1_text','$question_id','1'),('$answer2_text','$question_id','0'),('$answer3_text','$question_id','0')";
+                $query = "INSERT INTO `answers`(`answertext`, `questionid`, `value`) VALUES ('$answer1_text','$question_id','1'),('$answer2_text','$question_id','0'),('$answer3_text','$question_id','0')";
                 if(mysqli_query($db,$query)){
                 echo "<p> - Las respuestas han sido añadidas!</p>";
                 } else {
                 echo "<p> - Fallo en la insercción!</p>";
                 }
             } elseif($chosen_answer == "answer2") {
-                $query = "INSERT INTO `answers`(`text`, `questionid`, `value`) VALUES ('$answer1_text','$question_id','0'),('$answer2_text','$question_id','1'),('$answer3_text','$question_id','0')";
+                $query = "INSERT INTO `answers`(`answertext`, `questionid`, `value`) VALUES ('$answer1_text','$question_id','0'),('$answer2_text','$question_id','1'),('$answer3_text','$question_id','0')";
                 if(mysqli_query($db,$query)){
                 echo "<p> - Las respuestas han sido añadidas!</p>";
                 } else {
                 echo "<p> - Fallo en la insercción!</p>";
                 }
             } elseif($chosen_answer == "answer3") {
-                $query = "INSERT INTO `answers`(`text`, `questionid`, `value`) VALUES ('$answer1_text','$question_id','0'),('$answer2_text','$question_id','0'),('$answer3_text','$question_id','1')";
+                $query = "INSERT INTO `answers`(`answertext`, `questionid`, `value`) VALUES ('$answer1_text','$question_id','0'),('$answer2_text','$question_id','0'),('$answer3_text','$question_id','1')";
                 if(mysqli_query($db,$query)){
                 echo "<p> - Las respuestas han sido añadidas!</p>";
                 } else {
