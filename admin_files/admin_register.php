@@ -99,5 +99,5 @@
 <?php endif; ?>
   
 </body>
-<script src="../js/admin_register.js"></script>
+<script src="../assets/js/admin_register.js"></script>
 </html>
