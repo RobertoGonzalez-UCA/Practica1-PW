@@ -84,7 +84,7 @@
                 $_SESSION['errors'] = $errores;
             }
         }
-        header('Location: admin_modify.php');
+        header('Location: ../user_data.php');
     }else{
         header('Location: ../index.php');
     }

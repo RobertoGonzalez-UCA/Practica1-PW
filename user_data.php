@@ -34,7 +34,7 @@
                     <?php endif;
                 ?>
 
-                <form action="update_user.php" method="POST">
+                <form action="admin_files/update_user.php" method="POST">
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" value="<?=$_SESSION['user']['name']?>">
                     <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'nombre') : '' ?>
@@ -51,6 +51,14 @@
                     <input type="password" name="pass" value="<?=$_SESSION['user']['pass']?>" required>
                     <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'apellidos') : '' ?>
 
+                    <label for="rol">Rol</label>
+                    <input type="text" name="rol" value="<?=$_SESSION['user']['rol']?>" required>
+                    <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'rol') : '' ?>
+
+                    <label for="email_not_modify"></label>
+                    <input type="hidden" name="email_not_modify" value="<?=$_SESSION['user']['email']?>" required>
+                    <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'],'rol') : '' ?>
+
                     <input type="submit" value="Actualizar">
                 </form>
                 <br>
@@ -59,7 +67,7 @@
             </div>
     </div>
 <?php else: ?>
-    <?php header('Location: ../index.php'); ?>
+    <?php header('Location: index.php'); ?>
 <?php endif; ?>
 
 </body>
