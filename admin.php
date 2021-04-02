@@ -38,6 +38,7 @@
         <a class="boton boton-celeste" href="admin_files/admin_modify.php">Modificar usuarios</a>
         <a class="boton boton-verde" href="admin_files/subject_register.php">Registrar asignaturas</a>
         <a class="boton boton-celeste" href="admin_files/subject_modify.php">Modificar asignaturas</a>
+        <a class="boton boton-naranja" href="user_data.php">Mis datos</a>
 
         <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
         <?php borrarAlertas(); ?> 
