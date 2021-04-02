@@ -31,7 +31,7 @@
                     if($result2){
                         for($j=1;$j<=mysqli_num_rows($result2);$j++){
                             $row2 = $result2->fetch_array(MYSQLI_ASSOC);
-                            printf ("<label for='%s'><input type='radio' id='answer%s' name='%s' value='%s'> %s</label>", $row2["answerid"], $row2["answerid"], $nota, $row2["value"], $row2["answertext"]);
+                            printf ("<label for='%s'><input type='radio' id='answer%s' name='%s' value='%s'> %s</label>", $row2["answerid"], $row2["answerid"], $nota, $row2["answerid"], $row2["answertext"]);
                         }
                         printf ("<label for='%s'><input type='radio' id='answer%s' name='%s' value='0' checked> Dejar en blanco</label>", $row2["answerid"], $row2["answerid"], $nota);
                         $nota = $nota + 1;

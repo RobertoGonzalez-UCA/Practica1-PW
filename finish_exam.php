@@ -11,7 +11,20 @@
 <?php require_once 'includes/helpers.php'; ?><?php require_once 'includes/helpers.php'; ?>
 <?php require_once 'includes/connection.php'; ?>
 <?php if($_SESSION['user']['rol'] == 'alumno'): ?>
-<?php $resultado = $_POST['1'] +  $_POST['2'] +  $_POST['3'] +  $_POST['4'] +  $_POST['5'] +  $_POST['6'] +  $_POST['7'] +  $_POST['8'] +  $_POST['9'] +  $_POST['10']; ?>
+<?php $query = "SELECT * FROM answers JOIN questions on answers.questionid = questions.questionid WHERE answerid = {$_POST['1']} OR answerid = {$_POST['2']} OR answerid = {$_POST['3']} OR  answerid = {$_POST['4']} OR answerid = {$_POST['5']} OR answerid = {$_POST['6']} OR answerid = {$_POST['7']} OR answerid = {$_POST['8']} OR answerid = {$_POST['9']} OR answerid = {$_POST['10']} "; 
+    $result = mysqli_query($db,$query);
+    $resultado = 0;
+    if($result){
+        for($i=1;$i<=mysqli_num_rows($result);$i++){
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            $resultado += $row['value'];
+            $query2 = "INSERT INTO examanswers (answerid, examid) VALUES ({$row['answerid']}, {$_POST['exam-selected']}) ";
+            $result2 = mysqli_query($db,$query2);
+            if(!$result2) {
+                echo "Error al guardar la respuesta. ";
+            }
+        }
+    } ?>
 <!-- FINALIZAR EXAMEN -->
 <div class="bloque">
     <h3>Examen finalizado</h3>
@@ -24,6 +37,16 @@
         } else {
             echo "Error updating record: " . mysqli_error($db);
         }
+    ?>
+    <?php
+    $query = "SELECT * FROM examanswers JOIN exams on examanswers.examid = exams.examid JOIN answers on answers.answerid = examanswers.answerid JOIN questions on questions.questionid = answers.questionid WHERE answers.value = 0 AND exams.examid = {$_POST['exam-selected']} ";
+    $result = mysqli_query($db,$query);
+    if($result){
+        for($i=1;$i<=mysqli_num_rows($result);$i++){
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            printf("<br><span>Has fallado en la pregunta '%s', tu respuesta ha sido '%s'</span>", $row['text'], $row['answertext']);
+            }
+    }
     ?>
     <br>
     <a class="boton boton-verde" href="alumn.php">Volver al menú principal</a>
