@@ -15,7 +15,7 @@
         echo "Aun no se ha puesto fecha de examen.";
     }elseif($exam_date > $today){
         echo "<p>Aun no se ha realizado el examen. Espera hasta $exam_date.</p>";
-    } elseif($exam_date = $today) {
+    } elseif($exam_date == $today) {
         echo "<p>Hoy se ha realizado el examen, mañana se publicarán las notas.</p>";
     } elseif($exam_date < $today) {
         $query = "SELECT name FROM subjects WHERE subjectid = '$subjectid'";

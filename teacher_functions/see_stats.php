@@ -23,14 +23,16 @@
 			});
 		</script>
 </head>
+<?php
+require_once '../includes/helpers.php';
+require_once '../includes/connection.php';
+if($_SESSION['user']['rol'] == 'profesor'): ?>
 <body>
     <!-- Ver estadísticas -->
     <div class="bloque">
         <h3>Ver estadísticas</h3>
         <form id="combo" name="combo" action="" method="POST">
             <?php 
-            require_once '../includes/helpers.php';
-            require_once '../includes/connection.php';
             $current_uid = $_SESSION['user']['uid'];
             $query = "SELECT S.name, S.subjectid FROM users U, usersubjects US, subjects S WHERE U.uid = '$current_uid' AND US.uid = U.uid AND US.subjectid = S.subjectid";
             $result = mysqli_query($db,$query);
@@ -58,5 +60,8 @@
         <br>
         <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
     </div>
+    <?php else:
+    header('Location: ../index.php');
+    endif; ?>
 </body>
 </html>

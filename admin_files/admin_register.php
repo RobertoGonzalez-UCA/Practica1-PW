@@ -90,6 +90,7 @@
         </form>
         <br>
         <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
+        <a class="boton boton-rojo" href="../logout.php">Cerrar sesión</a>
         <?php borrarAlertas(); ?> 
     </div>
     
@@ -98,5 +99,5 @@
 <?php endif; ?>
   
 </body>
-<script src="../assets/js/admin_register.js"></script>
+<script src="../js/admin_register.js"></script>
 </html>
