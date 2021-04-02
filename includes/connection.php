@@ -3,7 +3,7 @@
 // Conexión
     $host = 'localhost';
     $user = 'root';
-    $password = '';
+    $password = '12345678';
     $database = 'gestor_examenes';
     $db = mysqli_connect($host,$user,$password,$database);
 
