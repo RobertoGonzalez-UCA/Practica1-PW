@@ -28,7 +28,7 @@
         while($row = $result->fetch_assoc())
         {
             $uid = $row['uid'];
-            $query = "INSERT INTO `exams`(`uid`, `subjectid`, `state`, `nota`, `date`) VALUES ($uid, $subjectid, 'PENDING', NULL, $date_insert)"; 
+            $query = "INSERT INTO `exams`(`uid`, `subjectid`, `estado`, `nota`, `date`) VALUES ($uid, $subjectid, 'PENDING', NULL, $date_insert)"; 
             if(!mysqli_query($db,$query)) {
                 $error = "Se ha producido un error al poner el examen.";
                 return;
