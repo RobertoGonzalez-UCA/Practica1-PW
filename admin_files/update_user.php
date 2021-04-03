@@ -85,13 +85,13 @@
             }
         }
         if($_SESSION['user']['rol'] == 'admin' && $_POST['is_admin']){
-            header('Location: ../user_data.php');
+            header('Location: ../includes/user_data.php');
         }elseif($_SESSION['user']['rol'] == 'admin'){
             header('Location: admin_modify.php');
         }elseif($_SESSION['user']['rol'] == 'profesor'){
-            header('Location: ../user_data.php');
+            header('Location: ../includes/user_data.php');
         }elseif($_SESSION['user']['rol'] == 'alumno'){
-            header('Location: ../user_data.php');
+            header('Location: ../includes/user_data.php');
         }
     }else{
         header('Location: ../index.php');

@@ -67,7 +67,7 @@
                 <th>Notables</th>
                 <th>Sobresalientes</th>
             </tr>
-            <tr>
+            <tr style='text-align: center;'>
                 <td>$num_students</td>
                 <td>$avg_grade</td>
                 <td>$min_grade</td>
@@ -92,7 +92,7 @@
         {
             $grade = $row['nota'] == NULL ? "No presentado" : $row['nota'];
     
-            $html.= "<tr>
+            $html.= "<tr style='text-align: center;'>
             <td>".$row['name'].", ".$row['surname']." </td>
             <td>$grade</td>
             </tr>";
