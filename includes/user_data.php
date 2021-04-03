@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <title>Actualizar Usuario</title>
 </head>
 <body>
-<?php require_once 'includes/connection.php'; ?>
-<?php require_once 'includes/helpers.php'; ?>
+<?php require_once '../includes/connection.php'; ?>
+<?php require_once '../includes/helpers.php'; ?>
 
 <?php if($_SESSION['user']['rol'] == 'admin' || $_SESSION['user']['rol'] == 'alumno' || $_SESSION['user']['rol'] == 'profesor'): ?>
 
@@ -53,7 +53,7 @@
                     
                     
                     $html .= "
-                        <form action='admin_files/update_user.php' method='POST'>
+                        <form action='../admin_files/update_user.php' method='POST'>
                             <label for='nombre'>Nombre</label>
                             <input type='text' name='nombre' value='$name'>
                             <?php echo isset($errors) ? mostrarError($errors,'nombre') : '' ?>
@@ -98,11 +98,11 @@
                 <br>
                 <?php 
                     if($_SESSION['user']['rol'] == 'admin'){
-                        $page = 'admin.php';
+                        $page = '../admin.php';
                     }elseif($_SESSION['user']['rol'] == 'alumno'){
-                        $page = 'alumn.php';
+                        $page = '../alumn.php';
                     }elseif($_SESSION['user']['rol'] == 'profesor'){
-                        $page = 'teacher.php';
+                        $page = '../teacher.php';
                     }
                 ?>
                 <a class="boton boton-verde" href='<?="$page"?>'>Volver</a>
@@ -110,7 +110,7 @@
             </div>
     </div>
 <?php else: ?>
-    <?php header('Location: index.php'); ?>
+    <?php header('Location: ../index.php'); ?>
 <?php endif; ?>
 
 </body>
