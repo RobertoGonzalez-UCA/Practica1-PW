@@ -1,7 +1,7 @@
 <?php
     require_once '../includes/connection.php';
             
-    if($_SESSION['user']['rol'] == 'admin'){
+    if($_SESSION['user']['rol'] == 'admin' || $_SESSION['user']['rol'] == 'profesor' || $_SESSION['user']['rol'] == 'alumno'){
         if(isset($_POST)){
             
             /* mysqli_real_escape..... evita injección SQL */
@@ -84,7 +84,15 @@
                 $_SESSION['errors'] = $errores;
             }
         }
-        header('Location: ../user_data.php');
+        if($_SESSION['user']['rol'] == 'admin' && $_POST['is_admin']){
+            header('Location: ../user_data.php');
+        }elseif($_SESSION['user']['rol'] == 'admin'){
+            header('Location: admin_modify.php');
+        }elseif($_SESSION['user']['rol'] == 'profesor'){
+            header('Location: ../user_data.php');
+        }elseif($_SESSION['user']['rol'] == 'alumno'){
+            header('Location: ../user_data.php');
+        }
     }else{
         header('Location: ../index.php');
     }

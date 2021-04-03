@@ -89,8 +89,7 @@
             <input type="submit" value="Registrar">
         </form>
         <br>
-        <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
-        <a class="boton boton-rojo" href="../logout.php">Cerrar sesión</a>
+        <a class="boton boton-verde" href="../admin.php">Volver</a>
         <?php borrarAlertas(); ?> 
     </div>
     
