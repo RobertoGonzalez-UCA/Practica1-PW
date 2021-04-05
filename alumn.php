@@ -17,9 +17,9 @@
     <div class="bloque">
         <h3> Bienvenido, <?= $_SESSION['user']['name'] . ' ' . $_SESSION['user']['surname'] ?> </h3>
         <h3>Menú alumnos</h3>
-        <a class="boton boton-verde" href="alumn_files/show_exams.php">Hacer examen</a>
-        <a class="boton boton-celeste" href="alumn_files/show_scores.php">Ver calificaciones</a>
-        <a class="boton boton-naranja" href="includes/user_data.php">Mis datos</a>
+        <a class="boton boton-verde" href="show_exams.php">Hacer examen</a>
+        <a class="boton boton-celeste" href="show_scores.php">Ver calificaciones</a>
+        <a class="boton boton-naranja" href="user_data.php">Mis datos</a>
         <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
     </div>
     
@@ -27,5 +27,7 @@
     <?php header('Location: index.php'); ?>
 <?php endif; ?>
     
+<?php mysqli_close($db);?>
+
 </body>
 </html>
