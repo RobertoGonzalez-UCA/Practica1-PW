@@ -19,5 +19,6 @@
 
     $html.="<br>";
 	
+	mysqli_close($db);
 	echo $html;
 ?>

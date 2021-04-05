@@ -111,6 +111,7 @@ if($_SESSION['user']['rol'] == 'profesor'): ?>
     </div>
     <?php else:
     header('Location: ../index.php');
-    endif; ?>
+    endif;
+    mysqli_close($db);?>
 </body>
 </html>

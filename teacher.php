@@ -21,5 +21,6 @@
     <a class="boton boton-naranja" href="includes/user_data.php">Mis datos</a>
     <a class="boton boton-rojo" href="logout.php">Cerrar sesión</a>
 </div>
+<?php mysqli_close($db);?>
 </body>
 </html>

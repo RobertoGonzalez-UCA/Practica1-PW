@@ -11,5 +11,6 @@
 		$html.= "<option value='".$row['questionid']."'>".$row['text']."</option>";
 	}
 	
+	mysqli_close($db);
 	echo $html;
 ?>

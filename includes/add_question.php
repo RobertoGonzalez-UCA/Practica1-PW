@@ -67,5 +67,6 @@
         <br>
         <a class="boton boton-verde" href="javascript: history.go(-1)">Volver</a>
     </div>
+    <?php mysqli_close($db);?>
 </body>
 </html>

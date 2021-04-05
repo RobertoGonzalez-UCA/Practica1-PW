@@ -11,5 +11,6 @@
 		$html.= "<option value='".$row['unitid']."'>".$row['name']."</option>";
 	}
 	
+	mysqli_close($db);
 	echo $html;
 ?>

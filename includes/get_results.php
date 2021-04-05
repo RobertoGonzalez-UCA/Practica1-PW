@@ -100,6 +100,7 @@
     
         $html.="</table><br>";
     
+        mysqli_close($db);
         echo $html;
     }
 
