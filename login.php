@@ -13,6 +13,7 @@
 
         $sql = "SELECT * FROM users WHERE email = '$email'";
         $login = mysqli_query($db,$sql);
+        mysqli_close($db);
 
         if($login && mysqli_num_rows($login) == 1){
             $usuario = mysqli_fetch_assoc($login);

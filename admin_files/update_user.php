@@ -69,7 +69,7 @@
                             "rol = '$rol'  " . 
                             "WHERE uid = " . $isset_user['uid'];
                     $save = mysqli_query($db,$sql);
-    
+                    mysqli_close($db);
                     if($save){
                         $_SESSION['completed'] = "El usuario se ha modificado con éxito";
                     }else{

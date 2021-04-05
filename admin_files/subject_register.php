@@ -69,7 +69,8 @@
             <?php
                 $sql = "SELECT uid,name,surname FROM users WHERE rol = 'profesor'";
                 $result = mysqli_query($db,$sql);
- 
+                mysqli_close($db);
+
                 if($result && mysqli_num_rows($result) >= 1){
                     
                     $html = "<select style='margin-bottom: 10px;' name='coordinator_id' required>";

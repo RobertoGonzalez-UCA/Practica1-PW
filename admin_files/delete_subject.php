@@ -51,11 +51,10 @@
                     }else{
                         $_SESSION['errors']['general'] = "Fallo al borrar la asignatura";
                     }
-    
                 }else{
-                    $_SESSION['errors']['general'] = "La asignatura a borrar no existe";
-                    
+                    $_SESSION['errors']['general'] = "La asignatura a borrar no existe";  
                 }
+                mysqli_close($db);
             }else{
                 $_SESSION['errors'] = $errores;
             }

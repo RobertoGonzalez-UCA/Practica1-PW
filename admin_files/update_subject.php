@@ -42,7 +42,8 @@
                             "WHERE subjectid = " . $isset_subject['subjectid'];
 
                     $guardar = mysqli_query($db,$sql);;
-    
+                    mysqli_close($db);
+
                     if($guardar){
                         $_SESSION['completed'] = "La asignatura se ha modificado con éxito";
                     }else{

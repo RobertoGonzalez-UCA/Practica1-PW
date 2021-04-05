@@ -39,6 +39,7 @@
         <?php
             $sql = "SELECT * FROM users";
             $result = mysqli_query($db,$sql);
+            mysqli_close($db);
 
             if($result && mysqli_num_rows($result) >= 1){
                 

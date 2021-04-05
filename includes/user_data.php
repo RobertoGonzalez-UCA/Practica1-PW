@@ -87,6 +87,7 @@
 
                      $counter++;
                 }
+                mysqli_close($db);
                 echo $html;
 
             }else{

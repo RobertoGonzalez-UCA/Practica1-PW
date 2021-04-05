@@ -13,7 +13,7 @@
 </div>
 <?php require_once 'includes/connection.php'; ?>
 <?php require_once 'includes/helpers.php'; ?>
-
+<?php mysqli_close($db);?>
 
 <!-- LOGIN -->
 <!-- ÉXITO LOGIN -->

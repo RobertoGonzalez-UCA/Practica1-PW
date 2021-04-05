@@ -151,10 +151,12 @@
                                 $save = mysqli_query($db,$sql);
                             }
                         }
+                        mysqli_close($db);
                     }else{
                         $sql = "INSERT INTO users VALUES(null,'$name','$surname','$email','$password','$rol')";
                         $save = mysqli_query($db,$sql);
-                
+                        mysqli_close($db);
+
                 
                         if($save){
                             $_SESSION['completed'] = "El usuario se ha registrado con éxito";

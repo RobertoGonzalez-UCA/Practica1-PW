@@ -47,6 +47,7 @@
                     /* Borrar usuario de users */
                     $sql = "DELETE FROM users WHERE uid = " . $isset_user['uid'];
                     $save = mysqli_query($db,$sql);
+                    mysqli_close($db);
 
                     if($save){
                         $_SESSION['completed'] = "El usuario se ha borrado con éxito";

@@ -39,7 +39,8 @@
                 $name_without_spaces = str_replace(' ','',$name);
                 $sql = "INSERT INTO subjects VALUES(null,'$name_without_spaces','$degree_id','$coordinator_id')";
                 $save = mysqli_query($db,$sql);
-        
+                mysqli_close($db);
+
         
                 if($save){
                     $_SESSION['completed'] = "La asignatura se ha registrado con éxito";
