@@ -67,7 +67,7 @@
             <h4 id="id-subjects">Imparte: </h4>
             <?php
                 $sql = "SELECT * FROM subjects";
-                $result = mysqli_query($db,$sql);
+                $result = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 mysqli_close($db);
 
                 if($result && mysqli_num_rows($result) > 1){

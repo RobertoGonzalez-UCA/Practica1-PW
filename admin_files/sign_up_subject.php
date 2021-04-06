@@ -38,7 +38,7 @@
             if(count($errors) == 0){
                 $name_without_spaces = str_replace(' ','',$name);
                 $sql = "INSERT INTO subjects VALUES(null,'$name_without_spaces','$degree_id','$coordinator_id')";
-                $save = mysqli_query($db,$sql);
+                $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 mysqli_close($db);
 
         

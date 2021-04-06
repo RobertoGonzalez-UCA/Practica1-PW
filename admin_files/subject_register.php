@@ -44,7 +44,7 @@
             <label for="degree_id">Elige un Grado</label>
             <?php
                 $sql = "SELECT degreeid,name FROM degrees";
-                $result = mysqli_query($db,$sql);
+                $result = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
     
                 if($result && mysqli_num_rows($result) >= 1){
                     
@@ -68,7 +68,7 @@
             <label for="coordinator_id">Elige un Coordinador</label>
             <?php
                 $sql = "SELECT uid,name,surname FROM users WHERE rol = 'profesor'";
-                $result = mysqli_query($db,$sql);
+                $result = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 mysqli_close($db);
 
                 if($result && mysqli_num_rows($result) >= 1){

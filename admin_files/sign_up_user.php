@@ -15,7 +15,7 @@
                 // Recogiendo las asignaturas seleccionadas
                 // Validación
                 $sql = "SELECT * FROM subjects";
-                $result = mysqli_query($db,$sql);
+                $result = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 if($result && mysqli_num_rows($result) > 1){
                     $subjects_id_choosen = array();
 
@@ -88,7 +88,7 @@
 
                         /* Primera Inserción */
                         $sql = "INSERT INTO users VALUES(null,'$name','$surname','$email','$password_segura','$rol')";
-                        $save = mysqli_query($db,$sql);
+                        $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 
                 
                         if($save){
@@ -105,7 +105,7 @@
                         foreach ($subjects_id_choosen as $current_subject) {
                             
                             $sql = "SELECT subjectid FROM subjects WHERE name='$current_subject'";
-                            $save = mysqli_query($db,$sql);
+                            $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
     
                             if($save && mysqli_num_rows($save) == 1){
                                 array_push($subject_uids, mysqli_fetch_assoc($save));
@@ -119,7 +119,7 @@
                 
                         /* Obtenemos el Id del nuevo usuario creado */
                         $sql = "SELECT uid FROM users WHERE email='$email'";
-                        $save = mysqli_query($db,$sql);
+                        $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
 
                         global $current_uid;
                         if($save && mysqli_num_rows($save) == 1){
@@ -139,7 +139,7 @@
                 
                             $sql = "INSERT INTO usersubjects VALUES('$subject_uid_string','$current_uid')";
                 
-                            $save = mysqli_query($db,$sql);
+                            $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                         }elseif($num_subjects_ids > 1){
                             foreach($subject_uids as $subject_uid){
                                 $subject_uid_string = implode("", $subject_uid);
@@ -148,13 +148,13 @@
 
                                 $sql = "INSERT INTO usersubjects VALUES('$subject_uid_string','$current_uid')";
     
-                                $save = mysqli_query($db,$sql);
+                                $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                             }
                         }
                         mysqli_close($db);
                     }else{
                         $sql = "INSERT INTO users VALUES(null,'$name','$surname','$email','$password','$rol')";
-                        $save = mysqli_query($db,$sql);
+                        $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                         mysqli_close($db);
 
                 

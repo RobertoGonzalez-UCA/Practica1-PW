@@ -20,19 +20,19 @@
             if(count($errores) == 0){
                 /* Comprobar si la asignatura a borrar existe en la tabla subjects */
                 $sql = "SELECT subjectid FROM subjects WHERE subjectid = '$id'";
-                $result = mysqli_query($db,$sql);
+                $result = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 $isset_id = mysqli_fetch_assoc($result);
 
                 if(isset($isset_id['subjectid'])){
                      /* Comprobar si la asignatura a borrar existe en la tabla usersubjects*/
                     $sql_2 = "SELECT subjectid FROM usersubjects WHERE subjectid = '$id'";
-                    $result_2 = mysqli_query($db,$sql_2);
+                    $result_2 = mysqli_query($db,$sql_2) or die('Error en la conexión a la BBDD');
                     $isset_id_2 = mysqli_fetch_assoc($result_2);
 
                     if(isset($isset_id_2['subjectid'])){
                         /* Borrar usuario de usersubjects */
                         $sql_2 = "DELETE FROM usersubjects WHERE subjectid = " . $isset_id_2['subjectid'];
-                        $save = mysqli_query($db,$sql_2);
+                        $save = mysqli_query($db,$sql_2) or die('Error en la conexión a la BBDD');
 
                         
                         if($save){
@@ -44,7 +44,7 @@
                     
                     /* Borrar asignatura de subjects */
                     $sql = "DELETE FROM subjects WHERE subjectid = " . $isset_id['subjectid'];
-                    $save = mysqli_query($db,$sql);
+                    $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
 
                     if($save){
                         $_SESSION['completed'] = "La asignatura se ha borrado con éxito";

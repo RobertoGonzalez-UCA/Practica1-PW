@@ -35,7 +35,7 @@
             /* die(var_dump($_SESSION['user'])); */
             $user_id = $_SESSION['user']['uid'];
             $sql = "SELECT * FROM users WHERE uid = $user_id";
-            $result = mysqli_query($db,$sql);
+            $result = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
 
             if($result && mysqli_num_rows($result) == 1){
                 

@@ -12,7 +12,9 @@
         $password = $_POST['password'];
 
         $sql = "SELECT * FROM users WHERE email = '$email'";
-        $login = mysqli_query($db,$sql);
+
+        $login = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
+        
         mysqli_close($db);
 
         if($login && mysqli_num_rows($login) == 1){

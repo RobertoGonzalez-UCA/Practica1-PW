@@ -56,7 +56,7 @@
             if(count($errores) == 0){
                 /* Comprobar si el email ya existe */
                 $sql = "SELECT uid, email FROM users WHERE email = '$email_not_modify'";
-                $isset_email = mysqli_query($db,$sql);
+                $isset_email = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 $isset_user = mysqli_fetch_assoc($isset_email);
     
                 if(isset($isset_user['uid'])){
@@ -68,7 +68,7 @@
                             "email = '$email',  " . 
                             "rol = '$rol'  " . 
                             "WHERE uid = " . $isset_user['uid'];
-                    $save = mysqli_query($db,$sql);
+                    $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                     mysqli_close($db);
                     if($save){
                         $_SESSION['completed'] = "El usuario se ha modificado con éxito";

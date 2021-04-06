@@ -30,7 +30,7 @@
     
                 /* Comprobar si el id de la asignatura existe */
                 $sql = "SELECT subjectid FROM subjects WHERE subjectid = '$id'";
-                $result = mysqli_query($db,$sql);
+                $result = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 $isset_subject = mysqli_fetch_assoc($result);
     
                 if(isset($isset_subject['subjectid'])){
@@ -41,7 +41,7 @@
                             "name = '$nombre_without_spaces'  " . 
                             "WHERE subjectid = " . $isset_subject['subjectid'];
 
-                    $guardar = mysqli_query($db,$sql);;
+                    $guardar = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                     mysqli_close($db);
 
                     if($guardar){

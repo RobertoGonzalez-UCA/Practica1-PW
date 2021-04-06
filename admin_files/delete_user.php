@@ -21,20 +21,20 @@
 
                 /* Comprobar si el usuario a borrar existe en la tabla users*/
                 $sql = "SELECT uid, email FROM users WHERE uid = '$uid'";
-                $isset_email = mysqli_query($db,$sql);
+                $isset_email = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                 $isset_user = mysqli_fetch_assoc($isset_email);
 
                 if(isset($isset_user['uid'])){
 
                      /* Comprobar si el usuario a borrar existe en la tabla usersubjects*/
                     $sql_2 = "SELECT uid FROM usersubjects WHERE uid = '$uid'";
-                    $isset_email_2 = mysqli_query($db,$sql_2);
+                    $isset_email_2 = mysqli_query($db,$sql_2) or die('Error en la conexión a la BBDD');
                     $isset_user_2 = mysqli_fetch_assoc($isset_email);
 
                     if(isset($isset_user['uid'])){
                         /* Borrar usuario de usersubjects */
                         $sql_2 = "DELETE FROM usersubjects WHERE uid = " . $isset_user['uid'];
-                        $save = mysqli_query($db,$sql_2);
+                        $save = mysqli_query($db,$sql_2) or die('Error en la conexión a la BBDD');
 
                         
                         if($save){
@@ -46,7 +46,7 @@
                     
                     /* Borrar usuario de users */
                     $sql = "DELETE FROM users WHERE uid = " . $isset_user['uid'];
-                    $save = mysqli_query($db,$sql);
+                    $save = mysqli_query($db,$sql) or die('Error en la conexión a la BBDD');
                     mysqli_close($db);
 
                     if($save){
